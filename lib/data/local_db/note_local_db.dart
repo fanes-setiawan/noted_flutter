@@ -57,4 +57,15 @@ Create table $tableName(
       whereArgs: [note.id],
     );
   }
+
+  //delete/hapus data dari tabel
+  Future<void> deleteNote(int id) async {
+    final db = await _initNoteLocalDB();
+
+    await db.delete(
+      tableName,
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
 }
