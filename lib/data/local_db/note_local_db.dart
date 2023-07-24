@@ -36,4 +36,14 @@ Create table $tableName(
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
+
+  //mengambil data dari tabel
+  Future<List<Note>> getAllNote() async {
+    final db = await _initNoteLocalDB();
+    final List<Map<String, dynamic>> result = await db.query(tableName);
+
+    return List.generate(result.length, (index) {
+      return Note.fromMap(result[index]);
+    });
+  }
 }
