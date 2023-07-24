@@ -9,4 +9,13 @@ class Note {
     required this.content,
     required this.createdTime,
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'title': title,
+      'content': content,
+      'createdTime': createdTime,
+    };
+  }
 }
