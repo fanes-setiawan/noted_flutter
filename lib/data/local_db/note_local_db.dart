@@ -46,4 +46,15 @@ Create table $tableName(
       return Note.fromMap(result[index]);
     });
   }
+
+  //update data
+  Future<void> updateNote(Note note) async {
+    final db = await _initNoteLocalDB();
+    await db.update(
+      tableName,
+      note.toMap(),
+      where: 'id = ?',
+      whereArgs: [note.id],
+    );
+  }
 }
