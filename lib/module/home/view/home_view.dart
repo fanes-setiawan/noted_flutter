@@ -133,7 +133,9 @@ class HomeView extends StatefulWidget {
         ],
       ),
       floatingActionButton: IconButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.to(FormNotedView());
+        },
         icon: CircleAvatar(
           radius: 24,
           child: Icon(
