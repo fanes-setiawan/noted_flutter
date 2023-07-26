@@ -1,6 +1,9 @@
 {
-    "modules": [],
+    "modules": [
+        "home"
+    ],
     "module_directory_name": "module",
     "experimental_mode": false,
-    "unfreezed": true
+    "unfreezed": true,
+    "use_cubit": false
 }
