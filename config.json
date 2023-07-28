@@ -1,7 +1,8 @@
 {
     "modules": [
         "home",
-        "form_noted"
+        "form_noted",
+        "edit_noted"
     ],
     "module_directory_name": "module",
     "experimental_mode": false,

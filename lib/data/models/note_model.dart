@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Note {
   final int? id;
   final String title;
@@ -30,5 +32,16 @@ class Note {
         ),
       ),
     );
+  }
+  String toJson() => json.encode(toMap());
+  factory Note.fromJson(String source) => Note.fromMap(json.decode(source));
+
+  Note copyWith(
+      {int? id, String? title, String? content, DateTime? createTime}) {
+    return Note(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        content: content ?? this.content,
+        createdTime: createTime ?? this.createdTime);
   }
 }

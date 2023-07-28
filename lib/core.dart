@@ -9,4 +9,6 @@ export 'package:noted_flutter/module/form_noted/controller/form_noted_controller
 export 'package:noted_flutter/module/form_noted/view/form_noted_view.dart';
 export 'package:noted_flutter/module/home/controller/home_controller.dart';
 export 'package:noted_flutter/module/home/view/home_view.dart';
+export 'package:noted_flutter/module/home/widget/cardContainer.dart';
 export 'package:noted_flutter/state_util.dart';
+export 'package:noted_flutter/wedget/detail_noted.dart';

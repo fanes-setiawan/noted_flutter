@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:noted_flutter/state_util.dart';
+import '../../../core.dart';
 import '../view/home_view.dart';
 
 class HomeController extends State<HomeView> {
   static late HomeController instance;
   late HomeView view;
+  late Note note;
+  List<Note> notes = [];
+  bool isLoading = false;
+
+  Future getAllNote() async {
+    setState(() {
+      isLoading = true;
+    });
+    notes = await NoteLocalDB().getAllNote();
+    setState(() {
+      isLoading = false;
+    });
+  }
 
   @override
   void initState() {
     instance = this;
+    getAllNote();
     super.initState();
   }
 

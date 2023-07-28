@@ -19,82 +19,8 @@ class FormNotedView extends StatefulWidget {
           Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: InkWell(
-              onTap: () async {
-                bool confirm = false;
-                await showDialog<void>(
-                  context: context,
-                  barrierDismissible: true,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: const Text('name file'),
-                      content: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            Container(
-                              child: TextFormField(
-                                maxLength: 20,
-                                decoration: const InputDecoration(
-                                  labelText: 'file',
-                                  labelStyle: TextStyle(
-                                    color: Colors.blueGrey,
-                                  ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.blueGrey,
-                                    ),
-                                  ),
-                                  helperText: "enter your name file?",
-                                ),
-                                onChanged: (value) {},
-                              ),
-                            ),
-                            ListBody(
-                              children: <Widget>[
-                                Text(
-                                    'Are you sure you want to save this text?'),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      actions: <Widget>[
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.grey[600],
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Text(
-                            "No",
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blueGrey,
-                          ),
-                          onPressed: () {
-                            confirm = true;
-                            Get.to(HomeView());
-                          },
-                          child: const Text(
-                            "Yes",
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ],
-                    );
-                  },
-                );
-
-                if (confirm) {
-                  print("Confirmed!");
-                }
+              onTap: () {
+                controller.save();
               },
               child: Image.asset(
                 "assets/save.png",
@@ -106,35 +32,67 @@ class FormNotedView extends StatefulWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: [
-              Container(
-                // padding: const EdgeInsets.all(12),
-                margin: const EdgeInsets.only(),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  // border: Border.all(),
-                ),
-                child: TextFormField(
-                  cursorColor: Colors.blue,
-                  cursorWidth: 1,
-                  maxLines: null,
-                  decoration: const InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.transparent),
-                    ),
-                    border: OutlineInputBorder(),
-                    labelStyle: TextStyle(
-                      color: Colors.blueGrey,
-                    ),
+      body: Form(
+        key: controller.formKey,
+        child: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: [
+                Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  onChanged: (value) {},
+                  child: TextFormField(
+                    controller: controller.nameFiletEditingController,
+                    maxLines: 1,
+                    decoration: InputDecoration(
+                      filled: true,
+                      labelText: 'enter name file',
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'please enter some text';
+                      }
+                      return null;
+                    },
+                  ),
                 ),
-              ),
-            ],
+                SizedBox(height: 20),
+                Container(
+                  // padding: const EdgeInsets.all(12),
+                  margin: const EdgeInsets.only(),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    // border: Border.all(),
+                  ),
+                  child: TextFormField(
+                    controller: controller.contenEditingController,
+                    cursorColor: Colors.blue,
+                    cursorWidth: 1,
+                    maxLines: null,
+                    decoration: const InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent),
+                      ),
+                      border: OutlineInputBorder(),
+                      labelStyle: TextStyle(
+                        color: Colors.blueGrey,
+                      ),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'please enter some text';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
