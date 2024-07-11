@@ -47,7 +47,7 @@ class FormNotedView extends StatefulWidget {
                   child: TextFormField(
                     controller: controller.nameFiletEditingController,
                     maxLines: 1,
-                    decoration: InputDecoration(
+                    decoration:const InputDecoration(
                       filled: true,
                       labelText: 'enter name file',
                       fillColor: Colors.white,
@@ -61,7 +61,7 @@ class FormNotedView extends StatefulWidget {
                     },
                   ),
                 ),
-                SizedBox(height: 20),
+            const     SizedBox(height: 20),
                 Container(
                   // padding: const EdgeInsets.all(12),
                   margin: const EdgeInsets.only(),

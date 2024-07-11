@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter/material.dart';
 import 'package:noted_flutter/core.dart';
-import 'package:noted_flutter/module/home/widget/cardContainer.dart';
-import '../controller/home_controller.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -13,17 +11,17 @@ class HomeView extends StatefulWidget {
 
     return Scaffold(
       body: controller.isLoading
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : controller.notes.isEmpty
-              ? Center(
+              ?const  Center(
                   child: Text("Notes Empty"),
                 )
               : CustomScrollView(
                   shrinkWrap: true,
                   slivers: <Widget>[
-                    SliverAppBar(
+                   const  SliverAppBar(
                       automaticallyImplyLeading: false,
                       pinned: true,
                       snap: true,
@@ -40,8 +38,8 @@ class HomeView extends StatefulWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10.0),
+                       const    Padding(
+                            padding:  EdgeInsets.only(left: 10.0),
                             child: Text(
                               "New",
                               style: TextStyle(
@@ -51,7 +49,7 @@ class HomeView extends StatefulWidget {
                               ),
                             ),
                           ),
-                          Container(
+                          SizedBox(
                             height: 150,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
@@ -62,8 +60,8 @@ class HomeView extends StatefulWidget {
                                 DateTime now = DateTime.now();
 
                                 if (createdTime.isBefore(
-                                    now.subtract(Duration(hours: 2)))) {
-                                  return SizedBox.shrink();
+                                    now.subtract(const  Duration(hours: 2)))) {
+                                  return const SizedBox.shrink();
                                 } else {
                                   // Use SizedBox.shrink() to hide the item
                                   return CardContainer(
@@ -74,9 +72,9 @@ class HomeView extends StatefulWidget {
                               },
                             ),
                           ),
-                          Divider(),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10.0),
+                        const   Divider(),
+                      const     Padding(
+                            padding:  EdgeInsets.only(left: 10.0),
                             child: Text(
                               "File",
                               style: TextStyle(
@@ -108,7 +106,7 @@ class HomeView extends StatefulWidget {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(5),
+                                  padding:const  EdgeInsets.all(5),
                                   child: Row(
                                     children: [
                                       Image.asset(
@@ -117,8 +115,8 @@ class HomeView extends StatefulWidget {
                                         height: 40.0,
                                         fit: BoxFit.fill,
                                       ),
-                                      SizedBox(width: 5),
-                                      Container(
+                                  const     SizedBox(width: 5),
+                                      SizedBox(
                                         width: 200,
                                         child: Column(
                                           crossAxisAlignment:
@@ -130,7 +128,7 @@ class HomeView extends StatefulWidget {
                                               controller.notes[index].title,
                                               maxLines: 1,
                                               overflow: TextOverflow.ellipsis,
-                                              style: TextStyle(
+                                              style: const  TextStyle(
                                                 color: Colors.black,
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 17,
@@ -141,7 +139,7 @@ class HomeView extends StatefulWidget {
                                                   .format(controller
                                                       .notes[index]
                                                       .createdTime),
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 color: Colors.grey,
                                                 fontSize: 12,
                                               ),
@@ -164,7 +162,7 @@ class HomeView extends StatefulWidget {
       floatingActionButton: controller.notes.isEmpty
           ? IconButton(
               onPressed: () async {
-                await Get.to(FormNotedView());
+                await Get.to(const FormNotedView());
                 controller.getAllNote();
               },
               icon: CircleAvatar(
@@ -177,11 +175,11 @@ class HomeView extends StatefulWidget {
                 ),
               )
                   .animate(onPlay: (controller) => controller.repeat())
-                  .shake(duration: Duration(seconds: 5000)),
+                  .shake(duration: const Duration(seconds: 5000)),
             )
           : IconButton(
               onPressed: () async {
-                await Get.to(FormNotedView());
+                await Get.to(const FormNotedView());
                 controller.getAllNote();
               },
               icon: CircleAvatar(

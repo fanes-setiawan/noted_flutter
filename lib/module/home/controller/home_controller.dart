@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
 import '../../../core.dart';
-import '../view/home_view.dart';
+import 'package:flutter/material.dart';
 
 class HomeController extends State<HomeView> {
   static late HomeController instance;

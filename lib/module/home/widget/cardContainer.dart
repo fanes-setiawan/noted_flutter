@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:noted_flutter/core.dart';
-import 'package:noted_flutter/wedget/detail_noted.dart';
 
 class CardContainer extends StatelessWidget {
   final int index;
@@ -22,12 +21,12 @@ class CardContainer extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           color: Colors.white24,
-          image: DecorationImage(
+          image:const  DecorationImage(
             image: AssetImage('assets/bg.png'),
             fit: BoxFit.cover,
           ),
         ),
-        margin: EdgeInsets.all(8),
+        margin:const  EdgeInsets.all(8),
         alignment: Alignment.center,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -37,7 +36,7 @@ class CardContainer extends StatelessWidget {
               note.title,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
+              style:const  TextStyle(
                 color: Colors.black,
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -45,12 +44,12 @@ class CardContainer extends StatelessWidget {
             ),
             Text(
               time,
-              style: TextStyle(
+              style:const  TextStyle(
                 color: Colors.white,
                 fontSize: 12,
               ),
             ),
-            SizedBox(height: 10),
+         const    SizedBox(height: 10),
           ],
         ),
       ),
